@@ -7,7 +7,7 @@ Modifier username,password,database<br />
 Cree la base de donne dans mysql<br />
 
 # Migration base de donnees
-$ node_modules/.bin/sequelize db:migrate
+Importer la base de donnes dans sql/users.sql
 
 # Lancement du serveur 
 $ npm start

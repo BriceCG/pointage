@@ -1,7 +1,6 @@
 let router = require('express').Router()
 const { Op } = require('sequelize')
-const models = require('../models')
-const User = models.user
+const User = require('../Models/User')
 router.get('/users', async (req, res) => {
     let users = await User.findAll()
     return res.send({ users: users })
