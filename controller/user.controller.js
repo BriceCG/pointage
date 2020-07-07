@@ -35,7 +35,7 @@ router.post('/user', require('../middleware/validation').validateUser(), async (
 })
 router.get('/users', async (req, res) => {
     let users = await User.findAll({
-      attributes:  ['user_username', 'user_role', 'user_departement_id', 'user_etat'],
+      attributes:  ['id','user_username', 'user_role', 'user_departement_id', 'user_etat'],
     })
     if (users) {
         return res.status(200).send({ users, status: "success" })
