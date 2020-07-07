@@ -1,5 +1,5 @@
 # Installation node_modules
-npm install
+$ npm install
 
 # Configuration base de donnes mysql
 aller dans: config/config.json<br />
