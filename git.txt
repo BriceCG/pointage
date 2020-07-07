@@ -1,0 +1,8 @@
+creation de remote: $ git remote anarana_remote https://github.com/BriceCG/pointage.git
+creation de branche : $ git checkout -b anarana_branche
+
+ajout de fichier dans la branche: $ git add .
+faire un commit : $ git commit -m "Description du commit"
+push les fichiers vers le repos git: $ git push anarana_remote anarana_branche 
+
+
