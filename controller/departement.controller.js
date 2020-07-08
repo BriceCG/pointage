@@ -41,7 +41,7 @@ router.get('/departement/:id', async (req, res) => {
 router.put('/departement/:id', async (req, res) => {
     const id = req.params.id
     const { departement_nom } = req.body
-    const departement_chef_id = req.body.chef_departement || null
+    const departement_chef_id = req.body.departement_chef_id || null
     let departement = await Departement.findOne({
         where: {
             id: id

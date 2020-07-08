@@ -46,7 +46,7 @@ router.get('/users', async (req, res) => {
 })
 
 router.get('/user/:id', async (req, res) => {
-    const attributes = ['user_username', 'user_role', 'user_etat', 'user_departement_id']
+    const attributes = ['id','user_username', 'user_role', 'user_etat', 'user_departement_id']
     let existingUser = await findOne(User, req.params.id, attributes)
     if (existingUser) {
         return res.status(200).send({ existingUser, status: "success" })

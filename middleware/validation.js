@@ -45,5 +45,17 @@ module.exports = {
                 next()
             }
         }
+    },
+    presenceValidation: ()=>{
+        return async (req,res,next)=>{
+           
+            const {presence_type} = req.body;
+            if (!presence_type){
+                return res.status(400).send({status:"erreur",message:"Presence vide"})
+            }
+            else{
+                next()
+            }
+        }
     }
 }

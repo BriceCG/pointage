@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 4000
 app.use('',require('./controller/departement.controller'))
 app.use('',require('./controller/user.controller'))
 app.use('',require('./controller/auth.controller'))
-
+app.use('',require('./controller/presence.controller'))
 app.listen(PORT,()=>{
     console.log('Serveur connecte au http://localhost:'+PORT)
 })

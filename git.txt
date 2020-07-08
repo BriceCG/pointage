@@ -5,4 +5,6 @@ ajout de fichier dans la branche: $ git add .
 faire un commit : $ git commit -m "Description du commit"
 push les fichiers vers le repos git: $ git push anarana_remote anarana_branche 
 
+Mettre a jour le depot: $ gut pull anarana_remote anarana_branche
+
 
