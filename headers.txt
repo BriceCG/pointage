@@ -1,0 +1,10 @@
+axios({
+    method:'post',
+    url: 'http://localhost:4000/presence',
+    headers:{
+        'x-api-key': token //Eto le token
+    },
+    data:{
+        presence_type: 'present na absent'
+    }
+})
