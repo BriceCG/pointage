@@ -10,8 +10,6 @@ app.use(compression())
 app.use(cors('*'))
 app.use(bodyParser.json())
 
-app.use('',require('./controller/user.controller'))
-
 const PORT = process.env.PORT || 4000
 
 app.use('',require('./controller/departement.controller'))

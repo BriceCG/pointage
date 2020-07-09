@@ -32,7 +32,8 @@ router.post('/login',require('../middleware/validation').authValidation(),async(
             user_etat: existingUser.user_etat,
             user_departement_id: existingUser.user_departement_id
         },require('../config/jwtConfig').secret)
-        return res.status(200).send({message:"Login reussi",status:"success",token})
+
+        return res.status(200).send({message:"Login reussi",status:"success",token,user_username})
     }
     else{
         return res.status(400).send({message:"Le mot de passe ne correspond pas",status:"erreur"})
