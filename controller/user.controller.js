@@ -4,6 +4,8 @@ const User = require('../Models/User')
 const findOne = require('../middleware/modelFunc').findOne
 const inDataBase = require('../middleware/inDataBase').inDatabase
 
+const {needRole,needAuth} = require('../middleware/auth')
+
 router.post('/user', require('../middleware/validation').validateUser(), async (req, res) => {
     const { user_username, user_password, user_role, user_etat } = req.body
     const user_departement_id = req.body.user_departement_id || null
@@ -93,6 +95,15 @@ router.put('/user/:id', require('../middleware/validation').validateUser(), asyn
             return res.status(400).send({ status: "erreur" })
         }
     
+})
+
+router.get('/me/users',needAuth(),needRole('chef'),async(req,res)=>{
+    const user = req.decoded
+    let users = await User.findAll({
+        where:{
+          user_departement_id: user.user_departement_id  
+        }
+    })
 })
 
 module.exports = router

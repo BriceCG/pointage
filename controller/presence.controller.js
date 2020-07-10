@@ -1,10 +1,47 @@
 let router = require('express').Router()
 const Presence = require('../Models/Presence')
+const {Op} = require('sequelize')
+const moment = require('moment')
 
 //middleware
-const needAuth = require('../middleware/auth').needAuth()
+const {needAuth,needRole} = require('../middleware/auth')
 const presenceValidation = require('../middleware/validation').presenceValidation()
 
+router.get('/presences/me',needAuth(),async(req,res)=>{
+    const user = req.decoded
+    let presences = await Presence.findAll({
+        where:{
+            pt_user_user_id_presence: user.user_id
+        }
+    })
+    if (presences){
+        return res.status(200).send({status:"success",presences})
+    }
+    else{
+        return res.status(400).send({status:"erreur",message:"Presences non trouvee"})
+    }
+})
+
+router.get('/presences/salaries',needAuth(),needRole('chef'),async(req,res)=>{
+    const user = req.decoded
+    const presences = await Presence.findAll({
+        where:{
+            [Op.and]:{
+                pt_departement_departement_id_presence: user.user_departement_id,
+                [Op.not]:{
+                    pt_user_user_id_presence: user.user_id
+                }
+            }
+        }
+    })
+    if (presences){
+        return res.status(200).send({status:"success",presences})
+    }
+    else{
+        return res.status(400).send({status:"erreur",message:"Presences non trouvee"})
+        
+    }
+})
 
 router.post('/presence',needAuth,presenceValidation,async(req,res)=>{
     const {presence_type} = req.body;

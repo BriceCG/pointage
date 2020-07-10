@@ -83,6 +83,14 @@
           "type": "String"
         }
       }
+    },
+    "addUserSuccess":{
+      "type": "object",
+      "properties":{
+        "message:":{
+          "type":"String"
+        }
+      }
     }
   },
   "host": "localhost:4000",
@@ -130,7 +138,6 @@
     "/me": {
       "get": {
         "tags": [],
-        
         "produces": [
           "application/json",
           "x-api-key"
@@ -138,12 +145,37 @@
         "responses": {
           "200": {
             "description": "ok",
-            "schema":{
-              "$ref":"#/definitions/meResponse"
+            "schema": {
+              "$ref": "#/definitions/meResponse"
             }
           },
-          "400":{
-            "description":"Error"
+          "400": {
+            "description": "Error"
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses":{
+          "200":{
+            "description": "ok",
+            "schema":{}
           }
         }
       }
